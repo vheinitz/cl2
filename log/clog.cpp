@@ -30,7 +30,7 @@ void FileLoggChannel::writeLog( QString msg )
 }
 
 
-CLogger::CLogger():_logLevel(PD_LL_ERROR)
+CLogger::CLogger():_logLevel(C_LL_ERROR)
 {
 }
 
@@ -82,21 +82,21 @@ void CLogger::stopLogging()
 void CLogger::setLogLevel( int ll ) {
 	switch(ll)
 	{
-	case PD_LL_NOLOG:
+	case C_LL_NOLOG:
 		_logLevel=0; 
 		break;
-	case PD_LL_TRACE:
-		_logLevel = PD_LL_TRACE | PD_LL_WARNING | PD_LL_ERROR;
+	case C_LL_TRACE:
+		_logLevel = C_LL_TRACE | C_LL_WARNING | C_LL_ERROR;
 		break;
-	case PD_LL_WARNING:
-		_logLevel = PD_LL_WARNING | PD_LL_ERROR;
+	case C_LL_WARNING:
+		_logLevel = C_LL_WARNING | C_LL_ERROR;
 		break;
-	case PD_LL_PERF:
-		_logLevel = PD_LL_PERF;
+	case C_LL_PERF:
+		_logLevel = C_LL_PERF;
 		break;
-	case PD_LL_ERROR:
+	case C_LL_ERROR:
 	default:
-		_logLevel = PD_LL_ERROR;
+		_logLevel = C_LL_ERROR;
 		break;	
 	}
 }
