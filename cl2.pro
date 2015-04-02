@@ -11,13 +11,13 @@
 QT       += core
 #QT       += script
 #QT       += declarative
-#QT       += network 
+QT       += network 
 #QT       += xml
 #QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
 
-INCLUDEPATH += log 
+INCLUDEPATH += . log os
 
 
 
@@ -26,10 +26,19 @@ INCLUDEPATH += log
 TARGET = cl2
 TEMPLATE = lib 
 
+############ LOG #############
+SOURCES += log/clog.cpp 
+HEADERS  += log/clog.h 
 
+############ OS ##############
 SOURCES += \
-    log/clog.cpp \
+	os/siserver.cpp \
+	os/fstools.cpp \	
+	os/persistence.cpp \
+	os/filewatcher.cpp \
 
 HEADERS  += \
-    log/clog.h \
-
+	os/siserver.h \
+	os/fstools.h \
+	os/persistence.h \
+	os/filewatcher.h \
