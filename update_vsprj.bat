@@ -7,5 +7,6 @@ qmake -t vclib
 cd eikju
 qmake -t vclib
 cd ..
-
-
+cd QSMTP
+qmake -t vclib
+cd ..
