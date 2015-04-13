@@ -12,7 +12,7 @@ QT       += core
 #QT       += script
 #QT       += declarative
 QT       += network 
-#QT       += xml
+QT       += xml
 #QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
@@ -36,9 +36,11 @@ SOURCES += \
 	os/fstools.cpp \	
 	os/persistence.cpp \
 	os/filewatcher.cpp \
+	xml/xpath.cpp \
 
 HEADERS  += \
 	os/siserver.h \
 	os/fstools.h \
 	os/persistence.h \
 	os/filewatcher.h \
+	xml/xpath.h \

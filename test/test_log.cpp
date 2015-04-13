@@ -53,5 +53,5 @@ void test_log::log_log()
 }
 
 
-QTEST_MAIN(test_log)
+//QTEST_MAIN(test_log)
 #include "test_log.moc"
