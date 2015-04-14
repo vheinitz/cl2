@@ -17,7 +17,7 @@ class ASTM_Record;
 typedef QSharedPointer<ASTM_Record> PASTM_Record;
 
 
-class CLIB_EXPORTWrongTypeException :public std::exception{};
+class CLIB_EXPORT WrongTypeException :public std::exception{};
 class CLIB_EXPORT ASTM_Record
 {
 protected:
