@@ -38,6 +38,7 @@ SOURCES += \
 	os/filewatcher.cpp \
 	xml/xpath.cpp \
 	net/tcpserver.cpp \
+	lis/astmparser.cpp \
 
 HEADERS  += \
 	os/siserver.h \
@@ -46,3 +47,4 @@ HEADERS  += \
 	os/filewatcher.h \
 	xml/xpath.h \
 	net/tcpserver.h \
+	lis/astmparser.h \
