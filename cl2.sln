@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eikju", "eikju\eikju.vcproj
 		{29E076D9-2EA5-3B6F-B939-1FC160F0DC3A} = {29E076D9-2EA5-3B6F-B939-1FC160F0DC3A}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QSMTP", "QSMTP\QSMTP.vcproj", "{75802441-1919-3463-B014-59AD2CEE6AD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -22,6 +24,10 @@ Global
 		{9937FA07-0A2B-3878-BE0F-6CBE733B7D3C}.Debug|Win32.Build.0 = Debug|Win32
 		{9937FA07-0A2B-3878-BE0F-6CBE733B7D3C}.Release|Win32.ActiveCfg = Release|Win32
 		{9937FA07-0A2B-3878-BE0F-6CBE733B7D3C}.Release|Win32.Build.0 = Release|Win32
+		{75802441-1919-3463-B014-59AD2CEE6AD0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{75802441-1919-3463-B014-59AD2CEE6AD0}.Debug|Win32.Build.0 = Debug|Win32
+		{75802441-1919-3463-B014-59AD2CEE6AD0}.Release|Win32.ActiveCfg = Release|Win32
+		{75802441-1919-3463-B014-59AD2CEE6AD0}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

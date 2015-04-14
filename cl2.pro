@@ -37,6 +37,7 @@ SOURCES += \
 	os/persistence.cpp \
 	os/filewatcher.cpp \
 	xml/xpath.cpp \
+	net/tcpserver.cpp \
 
 HEADERS  += \
 	os/siserver.h \
@@ -44,3 +45,4 @@ HEADERS  += \
 	os/persistence.h \
 	os/filewatcher.h \
 	xml/xpath.h \
+	net/tcpserver.h \
