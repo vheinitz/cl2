@@ -39,6 +39,7 @@ SOURCES += \
 	xml/xpath.cpp \
 	net/tcpserver.cpp \
 	lis/astmparser.cpp \
+	kvs/kvstore.cpp \
 
 HEADERS  += \
 	os/siserver.h \
@@ -48,3 +49,4 @@ HEADERS  += \
 	xml/xpath.h \
 	net/tcpserver.h \
 	lis/astmparser.h \
+	kvs/kvstore.h \
