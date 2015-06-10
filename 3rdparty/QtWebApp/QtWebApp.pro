@@ -4,7 +4,6 @@ TARGET = QtWebApp
 TEMPLATE = lib
 QT -= gui
 VERSION = 1.5.3
-DESTDIR = ../../output
 
 mac {
    QMAKE_MAC_SDK = macosx10.10
@@ -31,3 +30,4 @@ include(qtservice/qtservice.pri)
 include(logging/logging.pri)
 include(httpserver/httpserver.pri)
 include(templateengine/templateengine.pri)
+include(../../../outout.pri)

@@ -2,7 +2,6 @@
 QT       += core gui network
 
 TEMPLATE = vclib
-DESTDIR = ../../output
 TARGET = QSMTP
 DEFINES += BUILDING_QSMTP_DLL
 
@@ -36,3 +35,5 @@ HEADERS  += \
     ./mimemultipart.h \
     ./mimecontentformatter.h \
 	./common.h
+
+include(../../outout.pri)
