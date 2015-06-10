@@ -36,4 +36,4 @@ HEADERS  += \
     ./mimecontentformatter.h \
 	./common.h
 
-include(../../outout.pri)
+include(../output.pri)

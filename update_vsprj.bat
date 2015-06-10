@@ -10,3 +10,5 @@ cd ..
 cd 3rdparty\QtWebApp
 qmake -t vclib
 cd ..\..
+
+@REM pause

@@ -1,2 +1,2 @@
-DESTDIR = c:\temp\cl2
+DESTDIR = c:\\temp\\cl2
 

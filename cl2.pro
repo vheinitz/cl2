@@ -50,4 +50,4 @@ HEADERS  += \
 	lis/astmparser.h \
 	kvs/kvstore.h \
 
-include(../outout.pri)
+include(output.pri)
