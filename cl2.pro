@@ -22,7 +22,6 @@ INCLUDEPATH += . log os
 
 
 #output directory
-#DESTDIR = bin
 TARGET = cl2
 TEMPLATE = lib 
 
@@ -50,3 +49,5 @@ HEADERS  += \
 	net/tcpserver.h \
 	lis/astmparser.h \
 	kvs/kvstore.h \
+
+include(../outout.pri)
