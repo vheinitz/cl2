@@ -10,6 +10,10 @@
 #include <QtGlobal>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <QtGlobal>
+#include <QtMessageHandler>
+
 #ifndef WINDOWS_LEAN_AND_MEAN
   #define WINDOWS_LEAN_AND_MEAN
   #include <windows.h>
@@ -65,7 +69,7 @@ public:
 
 class CLIB_EXPORT CLogger
 {
-    static QtMsgHandler _messageHandlerInstaller;
+    static QtMessageHandler _messageHandlerInstaller;
     int _logLevel;
 
     CLogger();
@@ -118,7 +122,7 @@ public:
     }
 };
 
-
+#define C_DISABLE_LOGGING
 #ifndef C_DISABLE_LOGGING // disabling in pre-processor. mainly for checking, if logging is a really performance issue
     #define C_LOG( format, ... )     if( CLogger::instance().logLevel() & C_LL_ERROR ){qDebug(     "LOG:    \t%s:%d\t%s\t"format,__FILE__,__LINE__,__FUNCTION__, __VA_ARGS__ );}
     #define C_TRACE( format, ... )   if( CLogger::instance().logLevel() & C_LL_TRACE ){qDebug(     "TRACE:  \t%s:%d\t%s\t"format,__FILE__,__LINE__,__FUNCTION__, __VA_ARGS__ );}
@@ -138,7 +142,7 @@ public:
 #endif
 
 
-#define QS2CS( qstr ) qstr.toAscii().constData()
+#define QS2CS( qstr ) qstr.toLatin1().constData()
 
 /*!
 	Class for CPU-time measurement based on WINAPI QueryPerformanceCounter 

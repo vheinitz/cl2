@@ -9,6 +9,7 @@
 # ========================================================================== 
  
 QT       += core
+QT       += widgets
 #QT       += script
 #QT       += declarative
 QT       += network 

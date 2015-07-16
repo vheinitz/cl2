@@ -65,7 +65,7 @@ bool Persistence::declarePersistentItem( const QString &tag, QObject * item, con
     QSettings s;
     if( s.contains(tag) )
     {
-       item->setProperty( prop.toAscii(), s.value(tag));
+       item->setProperty( prop.toLatin1(), s.value(tag));
     }
     return true;
 }
@@ -90,6 +90,6 @@ void Persistence::saveItems()
 
     foreach(QString tag, _objItems.keys())
     {
-        s.setValue( tag, _objItems[tag].second->property(_objItems[tag].first.toAscii()) );
+        s.setValue( tag, _objItems[tag].second->property(_objItems[tag].first.toLatin1()) );
     }
 }

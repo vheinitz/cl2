@@ -131,7 +131,7 @@ public:
     ~KVStore();
 	void reset( );
 	void resetChanged( bool onlyPersistent=true );
-	bool changed( bool onlyPersistent=true, QString & firstChanged = QString(), QStringList ignoreList = QStringList() );
+    bool changed( bool onlyPersistent, QString & firstChanged, QStringList ignoreList = QStringList() );
 	void setDataRoot( const QString & path );
 	QStringList vars( ) const { return _kvstore.keys(); }
 	QMap<QString, QVariant> configs( ) const;

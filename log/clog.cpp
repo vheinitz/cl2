@@ -12,7 +12,7 @@
 #pragma warning( disable : 4996 ) // disable unsafe fopen, strcpy
 
 
-QtMsgHandler CLogger::_messageHandlerInstaller = qInstallMsgHandler( CLogger::pdMessageOutput );
+//QtMessageHandler CLogger::_messageHandlerInstaller = qInstallMessageHandler( CLogger::pdMessageOutput );
 
 QString _Log_ScopeTracer_::ScopeIndent;
 
@@ -71,7 +71,7 @@ void CLogger::initLogging( QStringList args)
         }
     }
 	setLogLevel(ll);
-	qInstallMsgHandler( CLogger::pdMessageOutput );
+    //qInstallMessageHandler( CLogger::pdMessageOutput );
 }
 
 void CLogger::stopLogging()

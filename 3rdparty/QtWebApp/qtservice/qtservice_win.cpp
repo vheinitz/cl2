@@ -684,7 +684,7 @@ DWORD QtServiceSysPrivate::serviceFlags(QtServiceBase::ServiceFlags flags) const
     return control;
 }
 
-#include "qtservice_win.moc"
+//#include "qtservice_win.moc"
 
 
 class HandlerThread : public QThread

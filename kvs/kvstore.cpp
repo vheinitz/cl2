@@ -327,11 +327,11 @@ bool KVStore::set(QString name, QVariant value, QObject* sender)
             {
                 if ( rec._propertyName == "valueChanged" )//todo: not depending on property name
                 {
-                    rec._instance->setProperty(rec._propertyName.toAscii().constData(), name);
+                    rec._instance->setProperty(rec._propertyName.toLatin1().constData(), name);
                 }
                 else
                 {					
-                    rec._instance->setProperty(rec._propertyName.toAscii().constData(), value);
+                    rec._instance->setProperty(rec._propertyName.toLatin1().constData(), value);
                 }                
             }
         }
@@ -371,7 +371,7 @@ void KVStore::subscribe(
 			_receivers.insert( receiver );
 			connect(receiver, SIGNAL(destroyed(QObject*)), this, SLOT( unsubscribe(QObject*) ) );			
 			int val = _kvstore[name].value().toInt();			
-			receiver->setProperty( propertyName.toAscii().constData(), _kvstore[name].value() );
+            receiver->setProperty( propertyName.toLatin1().constData(), _kvstore[name].value() );
 		}
 		else
 		{

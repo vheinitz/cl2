@@ -417,7 +417,7 @@ public slots:
 private:
     QtServiceBasePrivate *d_ptr;
 };
-#include "qtservice.moc"
+//#include "qtservice.moc"
 
 QtServiceBase *QtServiceBasePrivate::instance = 0;
 
