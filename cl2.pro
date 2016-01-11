@@ -9,16 +9,16 @@
 # ========================================================================== 
  
 QT       += core
-QT       += widgets
+#QT       += widgets
 #QT       += script
 #QT       += declarative
 QT       += network 
 QT       += xml
-#QT       += sql
+QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
 
-INCLUDEPATH += . log os
+INCLUDEPATH += . log os net lis kvs db vision xml
 
 
 
@@ -40,6 +40,9 @@ SOURCES += \
 	net/tcpserver.cpp \
 	lis/astmparser.cpp \
 	kvs/kvstore.cpp \
+	vision/imgproc.cpp \
+	vision/imgdb.cpp \
+	db/dbmanager.cpp\
 
 HEADERS  += \
 	os/siserver.h \
@@ -50,5 +53,8 @@ HEADERS  += \
 	net/tcpserver.h \
 	lis/astmparser.h \
 	kvs/kvstore.h \
+	vision/imgproc.h \
+	vision/imgdb.h \
+	db/dbmanager.h\
 
 include(output.pri)
