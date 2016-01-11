@@ -4,9 +4,9 @@ set PATH=C:\Qt\4.8.4\bin\
 
 
 qmake -t vclib
-cd QSMTP
+cd 3rdparty\QSMTP
 qmake -t vclib
-cd ..
+cd ..\..
 cd 3rdparty\QtWebApp
 qmake -t vclib
 cd ..\..
