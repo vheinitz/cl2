@@ -11,9 +11,19 @@
 #include <QSqlQueryModel>
 #include <QStandardItemModel>
 #include <QSqlError>
-#include "pddefines.h"
 
-class CORELIB_EXPORT DBObject
+#ifdef BUILDING_CLIB_DLL
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_EXPORT
+# endif
+#else
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_IMPORT
+# endif
+#endif
+
+
+class CLIB_EXPORT DBObject
 {
 public:
 	static DBObject null;
@@ -26,7 +36,7 @@ public:
 	bool contains( const QString &name)const{return _.contains(name);}
 };
 
-class CORELIB_EXPORT DbManager
+class CLIB_EXPORT DbManager
 {
 	QStringList _transactionAddFiles; // files to be tracked during transaction. delete on rollback, clear list on commit
 	bool _transactionStarted;		  // track files only if a transaction was started indeed    

@@ -27,7 +27,7 @@ namespace cv{
 		class Mat;
 	};
 
-
+#if 0
 
 struct CLIB_EXPORT PDImageInfo
 {
@@ -206,4 +206,5 @@ public:
 };
 
 
+#endif
 #endif
