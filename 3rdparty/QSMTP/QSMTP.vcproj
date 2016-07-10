@@ -12,7 +12,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\..\..\eval\browser\debug\"
+			OutputDirectory="..\..\..\..\LogVisualiser\build\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			ConfigurationType="2"
 			IntermediateDirectory="debug\"
@@ -65,7 +65,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\..\..\eval\browser\release\"
+			OutputDirectory="..\..\..\..\LogVisualiser\build\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			ConfigurationType="2"
 			IntermediateDirectory="release\"
