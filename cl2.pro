@@ -14,6 +14,7 @@ QT       += core
 #QT       += declarative
 QT       += network 
 QT       += xml
+QT       += gui
 QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL

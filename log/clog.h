@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 #include <QtGlobal>
-#include <QtMessageHandler>
+#include <QtMsgHandler>
 
 #ifndef WINDOWS_LEAN_AND_MEAN
   #define WINDOWS_LEAN_AND_MEAN
@@ -69,7 +69,7 @@ public:
 
 class CLIB_EXPORT CLogger
 {
-    static QtMessageHandler _messageHandlerInstaller;
+    static QtMsgHandler _messageHandlerInstaller;
     int _logLevel;
 
     CLogger();

@@ -1,6 +1,6 @@
 #include "dbmanager.h"
 #include <QCryptographicHash>
-#include <pdlog.h>
+#include <clog.h>
 
 DBObject DBObject::null;
 QString DBConnectionName;
@@ -44,7 +44,7 @@ bool DbManager::clearTable( QString tname )
 	bool ok = query.exec(sql);
 	if (!ok)
 	{
-		PD_ERROR("Can't clear table %s", QS2CS(tname) );
+		C_ERROR("Can't clear table %s", QS2CS(tname) );
 		return false;
 	}
 
@@ -109,7 +109,7 @@ DBObject DbManager::getObject( QString otype, int key )
 {
 	if (!_prototypes.contains(otype))
 	{
-		PD_ERROR("No such DB-object %s", QS2CS(otype) );
+		C_ERROR("No such DB-object %s", QS2CS(otype) );
 		return DBObject::null;
 	}
 
@@ -130,7 +130,7 @@ DBObject DbManager::getObject( QString otype, int key )
 	bool ok = query.exec(sql);
 	if (!ok)
 	{
-		PD_ERROR("DB-object %s not found at row %d", QS2CS(otype), key );
+		C_ERROR("DB-object %s not found at row %d", QS2CS(otype), key );
 		return DBObject::null;
 	}
 
@@ -152,7 +152,7 @@ QList<DBObject> DbManager::getObjectsExt( QString otype, const QString & extsql 
 	QList<DBObject> ret;
 	if (!_prototypes.contains(otype))
 	{
-		PD_ERROR("No such DB-object %s", QS2CS(otype) );
+		C_ERROR("No such DB-object %s", QS2CS(otype) );
 		return ret;
 	}
 
@@ -179,7 +179,7 @@ QList<DBObject> DbManager::getObjectsExt( QString otype, const QString & extsql 
 	bool ok = query.exec(sql);
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
 		return ret;
 	}
 
@@ -203,7 +203,7 @@ DBObject DbManager::getPrototype( QString otype )
 {
 	if (!_prototypes.contains(otype))
 	{
-		PD_ERROR("No such DB-table %s", QS2CS(otype) );
+		C_ERROR("No such DB-table %s", QS2CS(otype) );
 		return DBObject();
 	}
 
@@ -216,7 +216,7 @@ QList<DBObject> DbManager::getObjects( QString otype, const QString & sqlconditi
 	QList<DBObject> ret;
 	if (!_prototypes.contains(otype))
 	{
-		PD_ERROR("No such DB-object %s", QS2CS(otype) );
+		C_ERROR("No such DB-object %s", QS2CS(otype) );
 		return ret;
 	}
 
@@ -249,7 +249,7 @@ QList<DBObject> DbManager::getObjects( QString otype, const QString & sqlconditi
 	QSqlError err = query.lastError();
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
 		return ret;
 	}
 
@@ -273,7 +273,7 @@ bool DbManager::addObject( DBObject & dbo )
 {
 	if (!_prototypes.contains(dbo._type))
 	{
-		PD_ERROR("Can't add object '%s' without prototype", QS2CS(dbo._type) );
+		C_ERROR("Can't add object '%s' without prototype", QS2CS(dbo._type) );
 		return false;
 	}
 
@@ -317,7 +317,7 @@ bool DbManager::addObject( DBObject & dbo )
 	bool ok = query.exec();
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
 		return false;
 	}
 
@@ -331,7 +331,7 @@ bool DbManager::deleteObject( QString otype, int key )
 {
 	if (!_prototypes.contains(otype))
 	{
-		PD_ERROR("Can't delete object '%s' without prototype", QS2CS(otype) );
+		C_ERROR("Can't delete object '%s' without prototype", QS2CS(otype) );
 		return false;
 	}
 
@@ -345,7 +345,7 @@ bool DbManager::deleteObject( QString otype, int key )
 	bool ok = query.exec();
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
 		return false;
 	}
 
@@ -356,7 +356,7 @@ bool DbManager::deleteObject( DBObject filterObject )
 {
 	if (!_prototypes.contains(filterObject._type))
 	{
-		PD_ERROR("Can't update object '%s' without prototype", QS2CS(filterObject._type) );
+		C_ERROR("Can't update object '%s' without prototype", QS2CS(filterObject._type) );
 		return false;
 	}
 
@@ -388,7 +388,7 @@ bool DbManager::deleteObject( DBObject filterObject )
 	bool ok = query.exec();
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
 		return false;
 	}
 
@@ -399,7 +399,7 @@ bool DbManager::updateObject( DBObject & dbo )
 {
 	if (!_prototypes.contains(dbo._type))
 	{
-		PD_ERROR("Can't update object '%s' without prototype", QS2CS(dbo._type) );
+		C_ERROR("Can't update object '%s' without prototype", QS2CS(dbo._type) );
 		return false;
 	}
 
@@ -432,7 +432,7 @@ bool DbManager::updateObject( DBObject & dbo )
 	bool ok = query.exec();
 	if (!ok)
 	{
-		PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
+		C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );	
 		return false;
 	}
 
@@ -515,7 +515,7 @@ bool DbManager::checkDatabase( QString path )
 {
 	if( !QFileInfo(path).exists() )
 	{
-		PD_ERROR( "No Database %s", QS2CS( path ) );
+		C_ERROR( "No Database %s", QS2CS( path ) );
 		return false;
 	}
 	
@@ -523,7 +523,7 @@ bool DbManager::checkDatabase( QString path )
 	_db.setDatabaseName( path );
 	_db.open();
 /*	{
-		PD_ERROR( "Can't open Database %s", QS2CS( path ) );
+		C_ERROR( "Can't open Database %s", QS2CS( path ) );
 		return false;
 	}
 */
@@ -533,12 +533,12 @@ bool DbManager::checkDatabase( QString path )
 	if ( !query.exec(sql) )                 //old schema because the table db_meta_information doesn't exist
 	{
 
-		PD_ERROR( "Invalid schema on %s", QS2CS( path ) );
+		C_ERROR( "Invalid schema on %s", QS2CS( path ) );
 		return false;
 	}
 	else if ( query.record().count() != 1 ) //old schema because meta_information_value has no/redundant value/s
 	{
-		PD_ERROR( "Invalid or redundant schema-version on %s", QS2CS( path ) );
+		C_ERROR( "Invalid or redundant schema-version on %s", QS2CS( path ) );
 		return false;
 	}
 									  
@@ -547,7 +547,7 @@ bool DbManager::checkDatabase( QString path )
 	QString sh_req = schemaHash();
 	if ( sh_stored != sh_req )
 	{
-		PD_ERROR( "Invalid schema-version on %s", QS2CS( path ) );
+		C_ERROR( "Invalid schema-version on %s", QS2CS( path ) );
 		return false;                       //old schema because meta_information_value has wrong value
 	}
 
@@ -567,7 +567,7 @@ bool DbManager::initDatabase( QString path )
 	_db.setDatabaseName( path );
 	_db.open();
 	/*{
-		PD_ERROR( "Can't open Database %s", QS2CS( path ) );
+		C_ERROR( "Can't open Database %s", QS2CS( path ) );
 		return false;
 	}*/
 
@@ -620,7 +620,7 @@ bool DbManager::initDatabase( QString path )
 		ok = query.exec(sql);
 		if(!ok)
 		{
-			PD_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
+			C_ERROR("Invalid SQL \"%s\"", QS2CS(sql) );
 			ok=false;
 		}
 	}
