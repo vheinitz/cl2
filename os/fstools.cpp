@@ -63,6 +63,23 @@ QMap<QString, QString> FSTools::mapFromFile( QString fn, QRegExp sep)
     return ret;
 }
 
+QMap<QString, QString> FSTools::mapFromText( QString data, QRegExp sepkey, QRegExp sepline)
+{
+	QMap<QString, QString> ret;
+	QStringList lines = data.split( sepline );
+    foreach ( QString line, lines)
+    {
+		QString k = line.section(sepkey,0,0).trimmed();
+		if (k.isEmpty())
+		{
+			continue;
+		}
+		QString v = line.section(sepkey,1);
+        ret[k] = v;
+    }
+    return ret;
+}
+
 bool FSTools::mapToFile( QMap<QString, QString> m, QString fn, QString sep)
 {
 	QFile f(fn);

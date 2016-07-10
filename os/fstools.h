@@ -7,6 +7,7 @@
 #include <QMap>
 #include <QFile>
 #include <QTextStream>
+#include <QRegExp>
 
 #ifdef BUILDING_CLIB_DLL
 # ifndef CLIB_EXPORT
@@ -24,6 +25,7 @@ class CLIB_EXPORT FSTools{//TODO dummy. medge with changes from home
     public: static QStringList fromFile( QString fn);
 	public: static bool toFile( QStringList sl, QString fn);
 	public: static QMap<QString, QString> mapFromFile( QString fn, QRegExp sep);
+	public: static QMap<QString, QString> mapFromText( QString data, QRegExp sepkey, QRegExp sepline=QRegExp("(\\r\\n|\\r|\\n)"));
 	public: static bool mapToFile( QMap<QString, QString>m,QString fn, QString sep);
 	public: static bool freeSpaceCheck();
 	public: static bool removeDir(const QString &dirName);
