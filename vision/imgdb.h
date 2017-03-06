@@ -37,6 +37,7 @@ public:
 
 	ImageDatabase( QString rootPath = QString::null);
 	bool setRoot( QString rootPath);
+	QStringList images();
 
 	QString getImagePath( QString imghash );
 
