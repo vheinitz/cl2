@@ -44,6 +44,8 @@ SOURCES += \
 	vision/imgproc.cpp \
 	vision/imgdb.cpp \
 	db/dbmanager.cpp\
+	ui/imageview.cpp\
+#	ui/objectselector.cpp\
 
 HEADERS  += \
 	os/siserver.h \
@@ -57,5 +59,7 @@ HEADERS  += \
 	vision/imgproc.h \
 	vision/imgdb.h \
 	db/dbmanager.h\
+	ui/imageview.h\
+#	ui/objectselector.h\
 
 include(output.pri)
