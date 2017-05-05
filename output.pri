@@ -1,3 +1,3 @@
 #DESTDIR = build
-#DESTDIR = C:\\Development\\LogVisualiser\\build
-DESTDIR = ../../output
+DESTDIR = C:\\Development\\LogVisualiser.git\\build
+#DESTDIR = ../../output
