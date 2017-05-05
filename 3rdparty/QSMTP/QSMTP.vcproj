@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="QSMTP"
-	ProjectGUID="{6A915E36-5B1D-3D85-8288-C811ADF2ECDC}"
+	ProjectGUID="{B423EDB5-D04E-343D-9163-F48184D9E531}"
 	Keyword="Qt4VSv1.0">
 	<Platforms>
 		<Platform
@@ -12,7 +12,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\output\"
+			OutputDirectory="..\..\..\..\LogVisualiser.git\build\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			ConfigurationType="2"
 			IntermediateDirectory="debug\"
@@ -65,7 +65,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\output\"
+			OutputDirectory="..\..\..\..\LogVisualiser.git\build\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			ConfigurationType="2"
 			IntermediateDirectory="release\"
