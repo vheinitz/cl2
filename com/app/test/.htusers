@@ -1,0 +1,5 @@
+# Valentin Heinitz, 2017-12-16
+# Example .htusers file for image-upload project
+# use apache/bin/hdpassword for creating other users
+# e.g: apache/bin/hdpassword -c .htusers <username>
+
