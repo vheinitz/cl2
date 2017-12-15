@@ -1,0 +1,9 @@
+# Valentin Heinitz, 2017-12-16
+# Example .htaccess file for image-upload project
+
+AuthType Basic
+AuthName Image Uload Area"
+AuthUserFile d:\tmp\xampp\htdocs\test\.htusers
+Require valid-user
+
+
