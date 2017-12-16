@@ -19,13 +19,30 @@ QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
 
-INCLUDEPATH += . log os net lis kvs db vision xml
+INCLUDEPATH += . base log os net lis kvs db vision xml
 
+DEPENDPATH += . \
+              ai \
+              app \
+              base \
+              db \
+              gui \
+              kvs \
+              lis \
+              log \
+              os \
+              sec \
+              vision \
+              xml \
+              3rdparty/QSMTP \
 
 
 #output directory
 TARGET = cl2
-TEMPLATE = lib 
+TEMPLATE = vclib 
+
+############ BASE #############
+HEADERS  += base/cldef.h 
 
 ############ LOG #############
 SOURCES += log/clog.cpp 
@@ -33,33 +50,145 @@ HEADERS  += log/clog.h
 
 ############ OS ##############
 SOURCES += \
-	os/siserver.cpp \
 	os/fstools.cpp \	
 	os/persistence.cpp \
 	os/filewatcher.cpp \
-	xml/xpath.cpp \
-	net/tcpserver.cpp \
-	lis/astmparser.cpp \
-	kvs/kvstore.cpp \
-	vision/imgproc.cpp \
-	vision/imgdb.cpp \
-	db/dbmanager.cpp\
-	ui/imageview.cpp\
-#	ui/objectselector.cpp\
 
 HEADERS  += \
-	os/siserver.h \
 	os/fstools.h \
 	os/persistence.h \
 	os/filewatcher.h \
-	xml/xpath.h \
-	net/tcpserver.h \
-	lis/astmparser.h \
-	kvs/kvstore.h \
-	vision/imgproc.h \
-	vision/imgdb.h \
-	db/dbmanager.h\
-	ui/imageview.h\
-#	ui/objectselector.h\
 
-include(output.pri)
+	
+############ VISION ##############
+SOURCES += \
+	vision/imgproc.cpp \
+
+HEADERS  += \
+	vision/imgproc.h \
+	
+	
+############ KVS ##############
+SOURCES += kvs/kvstore.cpp 
+HEADERS  += kvs/kvstore.h 
+	
+	
+############ XML ##############
+SOURCES += xml/xpath.cpp 
+HEADERS  += xml/xpath.h 
+
+	
+############ DB ##############
+SOURCES += db/dbmanager.cpp\
+    db/imgdb.cpp \
+		   
+HEADERS  += db/dbmanager.h\
+    db/imgdb.h \
+	
+	
+############ LIS ##############
+SOURCES += \
+	lis/astmparser.cpp \
+    lis/ASTMRecord.cpp \
+    lis/DataMapper.cpp \
+    lis/LisLink.cpp \
+    lis/LisProxy.cpp \
+
+HEADERS  += \
+	lis/astmparser.h \
+	lis/ASTMRecord.h \
+	lis/DataMapper.h \
+	lis/LisLink.h \
+	lis/LisProxy.h \
+	
+	
+############ SEC ##############
+SOURCES += \
+    sec/authmanager.cpp\
+	sec/cryptmanager.cpp\
+
+HEADERS  += \
+    sec/authmanager.h\
+	sec/cryptmanager.h\
+	
+############ GUI ##############
+SOURCES += \
+    gui/extcombobox.cpp \
+    gui/extgview.cpp \
+    gui/extimageviewer.cpp \
+    gui/imagegroupview.cpp \
+    gui/imagelistmodel.cpp \
+    gui/imageview.cpp \
+    gui/markeritem.cpp \
+    gui/objectselector.cpp \
+    gui/screenmanager.cpp \
+#    gui/valuecontrols.cpp \
+			
+	
+ HEADERS  += \    
+    gui/extcombobox.h \
+    gui/extgview.h \
+    gui/extimageviewer.h \
+    gui/imagegroupview.h \
+    gui/imagelistmodel.h \
+    gui/imageview.h \
+    gui/markeritem.h \
+    gui/objectselector.h \
+    gui/screen.h \
+    gui/screenmanager.h \
+#    gui/valuecontrols.h \
+    gui/screen.h \
+    
+FORMS  += \   	
+    gui/imagegroupview.ui \
+
+
+
+######### COM #########################
+DEPENDPATH += \
+              com/app \
+              com/comport \
+              com/tcp 
+HEADERS += \
+           com/app/fileupload.h \
+           com/app/httpsrequest.h \
+           com/app/httpsupload.h \
+           com/app/uploadfile.h \
+           com/app/webapiconnector.h \
+           com/comport/comport.h \
+           com/tcp/tcpserver.h \
+           com/comport/comport_win.cpp \
+           com/comport/comport_lin.cpp
+
+SOURCES += \
+           com/app/fileupload.cpp \
+           com/app/httpsrequest.cpp \
+           com/app/httpsupload.cpp \
+           com/app/uploadfile.cpp \
+           com/app/webapiconnector.cpp \
+           com/comport/comport.cpp \
+           com/comport/comport_lin.cpp \
+           com/comport/comport_win.cpp \
+           com/tcp/tcpserver.cpp 
+
+####### APP  ######
+DEPENDPATH += \
+              app \
+
+HEADERS +=  \
+           app/languagemanager.h \
+           app/qmlclient.h \
+           app/siserver.h \
+           app/translationmanager.h \
+
+SOURCES +=  \
+           app/languagemanager.cpp \
+           app/qmlclient.cpp \
+           app/siserver.cpp \
+           app/translationmanager.cpp \
+
+####### AI  ######
+SOURCES += \
+	
+	
+HEADERS  += \
