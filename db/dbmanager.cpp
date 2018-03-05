@@ -468,7 +468,7 @@ bool DbManager::openDatabase( QString path )
 	_db = QSqlDatabase::addDatabase("QPSQL", DBConnectionName);
 	_db.setHostName("localhost");
 	_db.setPort(5432);
-	_db.setDatabaseName("aesku");
+	_db.setDatabaseName("mydbname");
 	_db.setUserName("postgres");
 	_db.setPassword("test");
 	*/
