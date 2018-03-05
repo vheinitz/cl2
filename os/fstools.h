@@ -29,10 +29,13 @@ class CLIB_EXPORT FSTools{//TODO dummy. medge with changes from home
 	public: static bool mapToFile( QMap<QString, QString>m,QString fn, QString sep);
 	public: static bool freeSpaceCheck();
 	public: static bool removeDir(const QString &dirName);
+	public: static bool FSTools::toCsv(QList<double> l, QString fn, QChar sep=',');
+
 };
 
 struct IFile : public QFile { IFile( QString fn ):QFile(fn){ open(QIODevice::ReadOnly); } };
 struct OFile : public QFile { OFile( QString fn ):QFile(fn){ open(QIODevice::WriteOnly); } };
+struct AFile : public QFile { AFile( QString fn ):QFile(fn){ open(QIODevice::Append); } };
 
 class TOStream : public QTextStream
 {
@@ -45,5 +48,16 @@ public:
 	}
 };
 
+
+class TAStream : public QTextStream
+{
+	AFile _f;
+
+public:
+	TAStream( QString fn ):_f(fn)
+	{
+		this->setDevice(&_f);
+	}
+};
 
 #endif

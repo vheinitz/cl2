@@ -43,6 +43,21 @@ bool FSTools::toFile( QStringList sl, QString fn)
     return true;
 }
 
+bool FSTools::toCsv( QList<double> l, QString fn, QChar sep)
+{
+    QFile f(fn);
+    if (!f.open(QIODevice::WriteOnly))
+		return false;
+
+    QTextStream ts(&f);
+    foreach (double e, l)
+    {
+        ts << e << sep;
+    }
+	ts << "\n";
+    return true;
+}
+
 QMap<QString, QString> FSTools::mapFromFile( QString fn, QRegExp sep)
 {
 	QMap<QString, QString> ret;

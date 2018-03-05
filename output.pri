@@ -1,2 +1,2 @@
-DESTDIR = build
+DESTDIR = "C:/Development/build"
 
