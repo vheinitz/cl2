@@ -18,6 +18,7 @@ QT       += gui
 QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
+DESTDIR = "C:/Development/build"
 
 INCLUDEPATH += . base log os net lis kvs db vision xml
 
