@@ -104,15 +104,14 @@ private:
 	{
 		switch( res )
 		{
-			////0-640x480 1-1024x768 2-1280x960 3-1632x1224 4-2048x1536 5-2560x1920
-			case 0: return QSize(640,480);
-			case 1: return QSize(1024,768);
-			case 2: return QSize(1280,960);
+			case 5: return QSize(2560,1920);
 			case 4: return QSize(2048,1536);
-			case 5: return QSize(2560,1920);			
-			case 3: 
+			case 3: return QSize(1280,960);
+			case 2: return QSize(1024,768);
+			case 1: return QSize(800,600);			
+			case 0: 
 			default:
-				return QSize(1632,1224);
+				return QSize(640,480);
 		}
 	}
 
