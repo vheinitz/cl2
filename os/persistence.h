@@ -38,27 +38,17 @@
  ========================================================================== */
 
 
-#ifndef PERSISTENCE_H
-#define PERSISTENCE_H
+#ifndef PERSISTENCE_H_G
+#define PERSISTENCE_H_G
 
+#include <base/cldef.h>
 #include <QObject>
 #include <QString>
 #include <QMap>
 #include <QPair>
 
-#define PERSISTENT( a,b,c) Persistence::instance().declarePersistentItem((a),(b),(c));
-#define PERSISTENCE_INIT( compName, appName ) Persistence::instance().init((compName),(appName));
-#define PERSISTENCE_SAVE Persistence::instance().saveItems();
 
-#ifdef BUILDING_CLIB_DLL
-# ifndef CLIB_EXPORT
-#   define CLIB_EXPORT Q_DECL_EXPORT
-# endif
-#else
-# ifndef CLIB_EXPORT
-#   define CLIB_EXPORT Q_DECL_IMPORT
-# endif
-#endif
+
 
 class CLIB_EXPORT Persistence : public QObject
 {
@@ -88,5 +78,10 @@ public slots:
     void saveItems();
 
 };
+
+#define PERSISTENT( a,b,c) Persistence::instance().declarePersistentItem((a),(b),(c));
+#define PERSISTENCE_INIT( compName, appName ) Persistence::instance().init((compName),(appName));
+#define PERSISTENCE_SAVE Persistence::instance().saveItems();
+
 
 #endif // PERSISTENCE_H

@@ -34,28 +34,28 @@ public:
 
 //Interface for Selector
 
-class CLIB_EXPORT ObjectSelectorInterface : public QObject
+class CLIB_EXPORT ObjectSelectorInterface 
 {
-Q_OBJECT
 
 public:
   ObjectSelectorInterface( QGraphicsScene * scene=0 ){};
   virtual ~ObjectSelectorInterface( ){};
-  virtual void reset()=0;
-  virtual void accept()=0;
-  virtual void mouseMoved( QPoint )=0;
-  virtual void mousePressed( QPoint )=0;
-  virtual void mouseReleased( QPoint )=0;
-  virtual bool isSelecting() const=0;
-  virtual void setSelectionColor( QColor c )=0;
-  virtual QColor selectionColor(  )const=0;
-  virtual void setActive( bool )=0;
-  virtual bool isActive(  )const=0;
+  virtual void reset(){};
+  virtual void accept(){};
+  virtual void mouseMoved( QPoint ){};
+  virtual void mousePressed( QPoint ){};
+  virtual void mouseReleased( QPoint ){};
+  virtual bool isSelecting() const{return false;}
+  virtual void setSelectionColor( QColor c ){};
+  virtual QColor selectionColor(  )const{return QColor();}
+  virtual void setActive( bool ){};
+  virtual bool isActive(  )const{return false;}
 
 
-signals:
+/*signals:
   void canceled();
   void accepted(QPolygon);
+  */
 };
 
 
