@@ -43,6 +43,14 @@ bool FSTools::toFile( QStringList sl, QString fn)
     return true;
 }
 
+bool FSTools::touch( QString fn)
+{
+    QFile f(fn);
+    if (!f.open(QIODevice::WriteOnly))
+		return false;
+    return true;
+}
+
 bool FSTools::toCsv( QList<double> l, QString fn, QChar sep)
 {
     QFile f(fn);

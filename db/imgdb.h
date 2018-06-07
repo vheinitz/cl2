@@ -26,6 +26,7 @@ Images are retrieved from database by their md5-hash and required size
 class CLIB_EXPORT ImageDatabase
 {
 	QString _rootPath;
+	QStringList _added;
 public:
 
 	ImageDatabase( QString rootPath = QString::null);
@@ -49,6 +50,7 @@ public:
 	//TODO: check possibility - conversion on first request
 	QString addImage( QString img, bool *existed=0 );
 	bool removeImage( QString hash );
+	bool contains( QString hash );
 };
 
 class CLIB_EXPORT ImageCache
