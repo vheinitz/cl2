@@ -12,7 +12,7 @@
 #include <QGraphicsSceneMouseEvent>
 
 
-ImageScene::ImageScene( QObject *p ) :QGraphicsScene(p),_image(0),_selector(0)
+ImageScene::ImageScene( QObject *p ) :QGraphicsScene(p),_image(0)//,_selector(0)
 {
 }
 
@@ -23,7 +23,7 @@ ImageScene::~ImageScene( )
 
 void ImageScene::setMarkingActive( bool m )
 {
-	_selector->setActive( m );
+	//_selector->setActive( m );
 }
 
 void ImageScene::keyReleaseEvent(QKeyEvent *event)
@@ -32,13 +32,13 @@ void ImageScene::keyReleaseEvent(QKeyEvent *event)
   {
       case Qt::Key_Escape:
       {
-        if ( _selector ) _selector->reset();
+        //if ( _selector ) _selector->reset();
         event->accept();
       }break;
 
     case Qt::Key_Enter:
       {
-        if ( _selector ) _selector->accept();
+        //if ( _selector ) _selector->accept();
         event->accept();
       }break;
   }
@@ -52,19 +52,19 @@ void ImageScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     event->accept();
     return;
   }
-  if ( _selector )_selector->mouseMoved( event->scenePos().toPoint() );
+  //if ( _selector )_selector->mouseMoved( event->scenePos().toPoint() );
   event->accept();
 
 }
 
 void ImageScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-  if ( !_selector ) return;
+  //if ( !_selector ) return;
 
-  if(  event->button() & Qt::MouseButton::LeftButton && ! _selector->isSelecting() )
+  if(  event->button() & Qt::MouseButton::LeftButton  )
   {
     QPointF p = event->scenePos();
-     if ( _selector ) _selector->mousePressed( event->scenePos().toPoint() );
+    // if ( _selector ) _selector->mousePressed( event->scenePos().toPoint() );
      event->accept();
   }
 }
@@ -73,9 +73,16 @@ void ImageScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
   if(  event->button() & Qt::MouseButton::LeftButton )
   {
-      if ( _selector ) _selector->mouseReleased( event->scenePos().toPoint() );
+      //if ( _selector ) _selector->mouseReleased( event->scenePos().toPoint() );
+	  emit clicked( event->scenePos().toPoint() );
       event->accept();
   }
+}
+
+void ImageScene::clear(  )
+{
+	_image=0;
+	QGraphicsScene::clear();
 }
 
 void ImageScene::setImage( QPixmap img )

@@ -18,9 +18,9 @@ QT       += gui
 QT       += sql
 
 DEFINES += BUILDING_CLIB_DLL
-DESTDIR = "C:/Development/build"
+DESTDIR = "../build"
 
-INCLUDEPATH += . base log os net lis kvs db vision xml
+INCLUDEPATH += . base gui log os net lis kvs db vision xml
 
 DEPENDPATH += . \
               ai \
@@ -121,7 +121,7 @@ SOURCES += \
     gui/imagelistmodel.cpp \
     gui/imageview.cpp \
     gui/markeritem.cpp \
-    gui/objectselector.cpp \
+#    gui/objectselector.cpp \
     gui/screenmanager.cpp \
 #    gui/valuecontrols.cpp \
 			
@@ -134,7 +134,7 @@ SOURCES += \
     gui/imagelistmodel.h \
     gui/imageview.h \
     gui/markeritem.h \
-    gui/objectselector.h \
+#    gui/objectselector.h \
     gui/screen.h \
     gui/screenmanager.h \
 #    gui/valuecontrols.h \

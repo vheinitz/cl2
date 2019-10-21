@@ -1,26 +1,40 @@
 #ifndef IMAGEVIEW_H
 #define IMAGEVIEW_H
 
-#include <base/cldef.h>
+
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-//#include "objectselector.h"
+#include <QPointF>
 
 
-class ObjectSelectorInterface;
+
+//class ObjectSelectorInterface;
+
+#ifdef BUILDING_CLIB_DLL
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_EXPORT
+# endif
+#else
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_IMPORT
+# endif
+#endif
 
 class CLIB_EXPORT ImageScene : public QGraphicsScene
 {
-  ObjectSelectorInterface *_selector;
+	Q_OBJECT
+  //ObjectSelector *_selector;
   QGraphicsPixmapItem *_image;
+
 public:
   ImageScene(  QObject *p );
   virtual ~ImageScene( );
-  void setSelector(ObjectSelectorInterface *s){_selector=s;}
+  //void setSelector(ObjectSelectorInterface *s){_selector=s;}
   void setImage( QPixmap img );
   void setMarkingActive( bool );
+  void clear(  );
 
   virtual void keyReleaseEvent(QKeyEvent *event);
 
@@ -28,15 +42,17 @@ public:
   virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
   virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+signals:
+  void clicked( QPointF );
+
 };
 
 
 
 //Interface for Selector
-
+/*
 class CLIB_EXPORT ObjectSelectorInterface 
 {
-
 public:
   ObjectSelectorInterface( QGraphicsScene * scene=0 ){};
   virtual ~ObjectSelectorInterface( ){};
@@ -52,11 +68,11 @@ public:
   virtual bool isActive(  )const{return false;}
 
 
-/*signals:
+signals:
   void canceled();
   void accepted(QPolygon);
-  */
+  
 };
-
+*/
 
 #endif // IMAGEVIEW_H

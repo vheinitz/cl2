@@ -41,14 +41,22 @@
 #ifndef PERSISTENCE_H_G
 #define PERSISTENCE_H_G
 
-#include <base/cldef.h>
+//#include <base/cldef.h>
 #include <QObject>
 #include <QString>
 #include <QMap>
 #include <QPair>
 
 
-
+#ifdef BUILDING_CLIB_DLL
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_EXPORT
+# endif
+#else
+# ifndef CLIB_EXPORT
+#   define CLIB_EXPORT Q_DECL_IMPORT
+# endif
+#endif
 
 class CLIB_EXPORT Persistence : public QObject
 {
