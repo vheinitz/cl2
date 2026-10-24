@@ -1,50 +1,52 @@
-# cl2 — Core Library for Qt/C++ 🔧
+# cl2
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![C++](https://img.shields.io/badge/C%2B%2B-blue.svg)](#)
 
-**Core lib 2** — a collection of reusable classes that extend Qt for the
-kinds of tasks that keep coming up in real desktop and lab-device software.
-Extracted from production machine-vision and LIS projects so the same
-non-trivial code isn't rewritten in every new app.
+"Core lib 2": a personal collection of Qt/C++ helper classes (logging,
+persistence, ASTM E1394 parsing, image views, TCP/serial/HTTP helpers),
+built as one shared library.
 
-## Modules
+Status: older project (2015-2019), not maintained. Build files are set up for
+Windows/Visual Studio; a build on current Qt versions has not been tested.
 
-| Area | Path | What it offers |
-|------|------|----------------|
-| **LIS / ASTM** | `lis/` | `ASTM_Record`, `astmparser`, `LisLink`, `LisProxy`, `DataMapper` — ASTM E1394 parsing & LIS communication in Qt |
-| **Image DB** | `db/` | `ImgDB`, `DBManager` — storing and querying image data |
-| **GUI** | `gui/` | `ImageView`, `ImageGroupView`, `ScreenManager`, `ObjectSelector`, `markeritem`, `valuecontrols` — image-centric widgets for vision apps |
-| **Security** | `sec/` | `CryptManager`, `AuthManager` — AES/encryption + authentication |
-| **XML** | `xml/` | `xpath` helpers |
-| **Persistence** | `os/` | `persistence`, `fstools` — app-state and filesystem helpers |
-| **Key-value store** | `kvs/` | `KVStore` — simple key/value storage |
-| **Logging** | `log/` | `clog` — console/log helpers |
+## Contents
 
-## Highlights
+Modules compiled by `cl2.pro`:
 
-- **`lis/astmparser`** — the same ASTM E1394 parsing expertise found in
-  [GoodnightAstm](../GoodnightAstm) and [ASTMViewer](../ASTMViewer), reworked
-  as a clean Qt/C++ `QSharedPointer`-based object tree.
-- **`gui/`** — building blocks for image-selection UIs (image lists, viewers,
-  object selectors) that appear in classification and annotation tools such as
-  [Classifier2](../Classifier2).
+| Path      | Contents |
+|-----------|----------|
+| `log/`    | `clog` logging |
+| `os/`     | `fstools`, `persistence`, `filewatcher` |
+| `kvs/`    | `KVStore` key/value store |
+| `xml/`    | XPath helper |
+| `db/`     | `DBManager`, `ImgDB` (Qt SQL) |
+| `vision/` | `imgproc` |
+| `lis/`    | ASTM E1394 record classes and parser (`astmparser`, `ASTMRecord`, with JSON output), `LisLink`, `LisProxy`, `DataMapper` |
+| `sec/`    | `AuthManager`; `CryptManager`, which calls an external `CSDES.exe` for en-/decryption |
+| `gui/`    | image views (`ImageView`, `ImageGroupView`, `ExtImageViewer`, `ExtGView`), `MarkerItem`, `ScreenManager`, `ExtComboBox` |
+| `com/`    | serial port (Windows/Linux), TCP server, HTTPS request/upload, web API connector |
+| `app/`    | language/translation manager, `QmlClient`, `SIServer` (small TCP server emitting received requests) |
 
-## Requirements
-
-- Qt 5 (Core, Gui, Widgets, Sql, Xml)
-- C++11+ compiler
+Not part of the library build: `gui/objectselector.cpp` and
+`gui/valuecontrols.cpp` (commented out), `meth/fsm11/` (small C++11 state
+machine with its own Qt test app), `test/` (QTestLib tests for `log` and `xml`).
 
 ## Build
 
-The project is a `qmake` `.pro` library:
+`cl2.pro` uses `TEMPLATE = vclib`, i.e. qmake generates a Visual Studio
+library project. `update_vsprj.bat` regenerates the projects for cl2,
+`3rdparty/QSMTP` and `3rdparty/QtWebApp` with Qt 4.8.4. A 2015 commit says
+"Ported to Qt5"; for Qt 5 the `QT += widgets` line in `cl2.pro` would have to
+be enabled.
 
-```bash
-qmake && make
-```
+The library is built to `../build`; `output.pri` sets
+`DESTDIR = C:/Development/build`.
 
-Use `output.pri` to include it in your own `qmake` project.
+## Third-party code
+
+- `3rdparty/QSMTP` – SmtpClient for Qt by Tőkés Attila, LGPL 2.1
+- `3rdparty/QtWebApp` – QtWebApp, LGPL (`3rdparty/QtWebApp/doc/copyright.txt`, `lgpl-3.0.txt`)
 
 ## License
 
-[MIT](LICENSE) © Valentin Heinitz
+[MIT](LICENSE), (c) 2015 Valentin Heinitz, except the third-party code above.
