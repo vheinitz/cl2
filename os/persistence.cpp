@@ -2,7 +2,7 @@
  * Copyright 2010: Valentin Heinitz, www.heinitz-it.de
  * Simple Persistence framework for Qt
  * Author: Valentin Heinitz, 2010-12-24
- * License: GPL, http://www.gnu.org/licenses/gpl.html
+ * License: MIT, see LICENSE
  *
  * D E S C R I P T I O N
  * Persistence implementation.
